@@ -41,17 +41,9 @@ public class AStar {
         openList.add(start);
 
         while (!openList.isEmpty()) {
-//            System.out.println("------確認openList-----");
-//            openList.forEach(n -> System.out.println(n.x + "," + n.y + "), f: "+ n.f+ ", g: "+ n.g));
-            Node node = openList.poll(); //從OPEN表中取估值f最小的節點n(Node由實現排序介面)
+            Node node = openList.poll(); 
             closedList.add(node);
             openList.remove(node);
-//            System.out.println("------確認closeList-----");
-
-//            closedList.forEach(n -> {if(n.parent != null) {
-//                System.out.println(n.x + "," + n.y + "), f: "+ n.f+ ", g: "+ n.g
-//                    + " parent node:"+ n.parent.x+ ","+ n.parent.y);}});
-//            System.out.println("--取到的Node:" + node.x + ", " + node.y);
 
             if (node.x == target.x && node.y == target.y) {
                 ArrayList<Node> path = new ArrayList<>();
@@ -63,8 +55,6 @@ public class AStar {
             }
 
             ArrayList<Node> neighbor = node.getNeighbours(map);
-//            System.out.println("------neighbor--------------");
-//            neighbor.forEach(n -> System.out.println(n.x + "," + n.y));
 
             for (int i = 0; i < neighbor.size(); i++) {
                 Node m = neighbor.get(i);
